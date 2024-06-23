@@ -1,1 +1,55 @@
-1.2024-06-23每日一题：链接：https://leetcode.cn/problems/detect-capital/description/?envType=daily-question&envId=2024-06-23
+2024-06-23每日一题：链接：https://leetcode.cn/problems/detect-capital/description/?envType=daily-question&envId=2024-06-23
+1.未通过
+class Solution {
+public:
+	bool detectCapitalUse(string word) {
+		bool  bCapital = word[0] < 'a' ? true : false;
+		if (bCapital && word.size() >= 2)
+		{
+			bCapital = word[1] < 'a' ? true : false;
+			for (int i = 2; i < word.size(); i++)
+			{
+				if ((word[i] < 'a' ? true : false) != bCapital)
+					return false;
+			}
+		}
+		else  if(!bCapital){
+			for (int i = 1; i < word.size(); i++)
+			{
+				if (word[i] >= 'A')
+					return false;
+			}
+		}
+		return true;
+	}
+};
+结果输入："USA"，结果"fasle”,正确答案：""true
+2.通过，自己写了字母是不是大小写的函数isupper
+class Solution {
+public:
+	bool detectCapitalUse(string word) {
+		bool bCapital = isupper(word[0]);
+		if (bCapital && word.size() >= 2) {
+			bCapital = isupper(word[1]);
+			for (int i = 2; i < word.size(); i++) {
+				if (isupper(word[i]) != bCapital)
+					return false;
+			}
+		}
+		else  if(!bCapital){
+			for (int i = 1; i < word.size(); i++)
+				if (isupper(word[i]))
+					return false;
+		}
+		return true;
+	}
+private:
+	bool isupper(char ch)
+	{
+		if (ch > 'Z')
+			return false;
+		else
+			return true;
+	}
+};
+原因分析：暂时未知
