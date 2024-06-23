@@ -23,7 +23,7 @@ public:
 		return true;
 	}
 };
-结果输入："USA"，结果"fasle”,正确答案：""true
+结果输入："USA"，结果"fasle”,正确答案："true"
 2.通过，自己写了字母是不是大小写的函数isupper
 class Solution {
 public:
